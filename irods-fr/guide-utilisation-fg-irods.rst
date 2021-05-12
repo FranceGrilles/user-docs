@@ -42,7 +42,7 @@ aux utilisateurs :
 * de signer les conditions d'accès au service FG-iRODS : http://www.france-grilles.fr/IMG/pdf/iRODS_Service_Policy.pdf ;
 
 * de fournir un plan de gestion de données (PGD). Plusieurs exemples de PGD
-  sont disponibles sur le site de DMP OPIDoR `<https://dmp.opidor.fr/>`_ .
+  sont disponibles sur le site de DMP OPIDoR `<https://dmp.opidor.fr/>`_.
 
 Une fois les documents reçus, l'accès au service est ouvert, les
 identifiants et la documentation du service transmis aux
@@ -65,7 +65,7 @@ Environnement
 
 Le client en ligne de commande iRODS utilise un fichier pour stocker
 la configuration pour se connecter à l'infrastructure iRODS. Ce fichier
-est *~/irods/irods_environment.json* et doit être créé avec le contenu
+est ``~/irods/irods_environment.json`` et doit être créé avec le contenu
 suivant :
 
 .. code-block:: console
@@ -144,8 +144,8 @@ La commande **ienv** affiche l'environnement iRODS :
 Utilisation du service FG-iRODS
 ===============================
 
-Aide en ligne
--------------
+Aide interactive
+----------------
 
 **ihelp** permet d'afficher la liste des commandes iRODS, ainsi que l'aide
 sur une commande spécifique :
@@ -207,7 +207,7 @@ Chargement des données
 ----------------------
 
 Dans cette section, des fichiers vont être chargés vers FG-iRODS. Le
-fichier utilisé pour ces exemples est ``foo.bin``, et peut être
+fichier utilisé pour ces exemples est ``foo.bin``, il peut être
 remplacé par un autre fichier de votre choix. Si vous souhaitez travailler
 avec le fichier ``foo.bin``, vous pouvez le créer avec la commande
 suivante :
@@ -255,7 +255,7 @@ les données, il faut utiliser l'option **-L** avec la commande **ils** :
        sha2:veVzp+ApMzyVRzZN0BZIkDyFuqUp/4tM4sLVACp00B8=    generic    /vault1/resc/home/<username>/foo.bin
 
 
-Cette commmande nous indique que :
+Le résultat de cette commande nous indique que :
 
   * le fichier ``foo.bin`` est enregistré par FG-iRODS comme :
     ``/FranceGrillesZone/home/<username>/foo.bin`` ;
@@ -268,7 +268,8 @@ Cette commmande nous indique que :
 
   * sa taille est de 33554432 octets ;
 
-  * son *checksum* a été enregistré (*sha:veVzp+ApMzyVRzZN0BZIkDyFuqUp/4tM4sLVACp00B8=*).
+  * son *checksum* a été enregistréi
+    (*sha:veVzp+ApMzyVRzZN0BZIkDyFuqUp/4tM4sLVACp00B8=*).
 
 
 Téléchargement de données
@@ -335,7 +336,7 @@ Naviguer à travers les collections
 ++++++++++++++++++++++++++++++++++
 
 Le répertoire courant de travail correspond à l'emplacement sur lequel
-vous vous trouvez dans l'arborescence iRODS. Pour afficher votre répertoire
+vous travaillez dans l'arborescence iRODS. Pour afficher votre répertoire
 courant sur iRODS, utilisez :
 
 .. code-block:: shell-session
@@ -343,7 +344,7 @@ courant sur iRODS, utilisez :
    $ ipwd
    /FranceGrillesZone/home/<username>
 
-Si vous ne spécifiez pas le chemin complet, mais uniquemenet un chemin
+Si vous ne spécifiez pas le chemin complet, mais uniquement un chemin
 relatif tel que ``mycollection/<file>``, iRDS utilise automatiquement
 le répertoire courant de travail comme préfixe. Vous pouvez vous déplacer
 dans l'arborescence et modifier ce répertoire courant de travail avec la
@@ -373,13 +374,13 @@ recherchés. Les métadonnées sont ajoutées avec la commande :
    $ imeta add -d foo.bin 'length' '20' 'words'
 
 
-Le champs *Unit* peut être vide :
+Le champ *Unit* peut être vide :
 
 .. code-block:: shell-session
 
    $ imeta add -d foo.bin 'project' 'example'
 
-Les métadonnnées peuvent également être ajoutées à une collection :
+Les métadonnées peuvent également être ajoutées à une collection :
 
 .. code-block:: shell-session
 
@@ -412,7 +413,7 @@ et pour une collection, la commande suivante :
 
 
 Recherche avec les métadonnées
-------------------------------
+++++++++++++++++++++++++++++++
 
 La recherche de fichiers ou de collections à l'aide des métadonnées
 est effectuée avec la commande suivante :
@@ -424,9 +425,8 @@ est effectuée avec la commande suivante :
    dataObj: foo.bin
 
 
-
 Recherche avancée
------------------
++++++++++++++++++
 
 Afin d'effectuer une recherche plus fine de fichiers ou de collections,
 il est possible d'interroger directement le catalogue iCAT avec la
@@ -439,7 +439,7 @@ commande **iquest** :
    META_COLL_ATTR_VALUE = John Smith
    ------------------------------------------------------------
 
-Les résultats peuvent être filtrés en fonction d'une valeur spécifique :
+Les résultats peuvent être filtrés à l'aide d'un ou plisusieurs attributs :
 
 .. code-block:: shell-session
 
@@ -450,7 +450,7 @@ Les résultats peuvent être filtrés en fonction d'une valeur spécifique :
    ------------------------------------------------------------
 
 
-**NOTE**: le caractère '%' est un caractère générique (*wildcard*).
+**NOTE** : le caractère '%' est un caractère générique (*wildcard*).
 
 Si vous recherchez un objet de données plutôt qu'une collection, il
 faut remplacer *META_COLL_ATTR_NAME* par *META_DATA_ATTR_NAME*. De

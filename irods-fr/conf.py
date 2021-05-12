@@ -142,7 +142,7 @@ latex_elements = {
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
     (master_doc, 'guide-utilisation-fg-irods.tex', 'Guide d\'utilisation du service FG-iRODS',
-     'Jérôme Pansanel', 'manual'),
+     'Équipe FG-iRODS', 'manual'),
 ]
 
 
